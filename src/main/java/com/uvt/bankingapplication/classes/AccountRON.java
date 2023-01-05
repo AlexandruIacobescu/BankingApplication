@@ -6,8 +6,8 @@ import com.uvt.bankingapplication.exceptions.RetrieveException;
 import com.uvt.bankingapplication.interfaces.Transfer;
 
 public class AccountRON extends Account implements Transfer {
-    public AccountRON(String accountNumber, double amount) throws DeposeException, IllegalAccountException {
-        super(accountNumber, amount);
+    public AccountRON(String accountNumber, String IBAN, double amount) throws DeposeException, IllegalAccountException {
+        super(accountNumber, IBAN, amount);
     }
 
     public double getInterest() {

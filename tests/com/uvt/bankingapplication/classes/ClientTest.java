@@ -10,7 +10,7 @@ public class ClientTest {
 
     @Test
     public void createValidClientWithRONAccountTest() throws DeposeException, IllegalAccountException {
-        Client client = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", 250, (msg, client1) -> {
+        Client client = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", "IE12BOFI90000112345678", 250, (msg, client1) -> {
         });
     }
 
@@ -18,7 +18,7 @@ public class ClientTest {
     public void createValidClientWithInvalidRONAccountTest() {
         double amount = -250;
         IllegalAccountException exception = Assertions.assertThrows(IllegalAccountException.class, () -> {
-            Client client = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", amount, (msg, client1) -> {
+            Client client = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", "IE12BOFI90000112345678", amount, (msg, client1) -> {
 
             });
         });
@@ -27,10 +27,10 @@ public class ClientTest {
 
     @Test
     public void addAccountToClientTest() throws DeposeException, IllegalAccountException {
-        Client client = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", 250, (msg, client1) -> {
+        Client client = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", "IE12BOFI90000112345678", 250, (msg, client1) -> {
 
         });
-        client.addAccount(Account.TYPE.RON, "1234-5678-9101-1213", 900);
+        client.addAccount(Account.TYPE.RON, "1234-5678-9101-1213", "IE12BOFI90000112345678", 900);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class ClientTest {
                 .name("Anna Gunn")
                 .address("44th Downing Street")
                 .dateOfBirth("2001-09-06")
-                .addAccount(Account.TYPE.RON, "9874-2558-6321-2011", 620)
+                .addAccount(Account.TYPE.RON, "9874-2558-6321-2011", "IE12BOFI90000112345678", 620)
                 .clientCode("BLIZZARD11")
                 .clientPassword("Rockefeller")
                 .build();
@@ -49,10 +49,10 @@ public class ClientTest {
 
     @Test
     public void closeAccountTest() throws DeposeException, IllegalAccountException, AccountClosingException {
-        Client client = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", 250, (msg, client1) -> {
+        Client client = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", "IE12BOFI90000112345678", 250, (msg, client1) -> {
 
         });
-        client.addAccount(Account.TYPE.RON, "1234-5678-9101-1214", 0);
+        client.addAccount(Account.TYPE.RON, "1234-5678-9101-1214", "IE12BOFI90000112345678", 0);
         client.closeAccount("1234-5678-9101-1214");
     }
 

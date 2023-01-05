@@ -22,8 +22,10 @@ public class EntityTest {
                 .name("Anna Gunn")
                 .address("44th Downing Street")
                 .dateOfBirth("2001-09-06")
-                .addAccount(Account.TYPE.RON, "9874-2558-6321-2011", 620)
+                .addAccount(Account.TYPE.RON, "9874-2558-6321-2011", "IE12BOFI90000112345678", 620)
                 .mediator(mediator)
+                .clientCode("dfsdfsdff")
+                .clientPassword("wedfedfgfgh")
                 .build();
 
         mediator.addClient(bank);

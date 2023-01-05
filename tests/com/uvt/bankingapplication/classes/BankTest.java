@@ -16,10 +16,10 @@ public class BankTest {
     public void createMoreClientsWithTheSameAccountTest() throws DeposeException, IllegalAccountException {
         Bank bank = Bank.getInstance("UniCredit Bank", (msg, client) -> {});
 
-        Client client1 = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", 250, (msg, client) -> {
+        Client client1 = new Client("Anna Holt", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", "IE12BOFI90000112345678", 250, (msg, client) -> {
 
         });
-        Client client2 = new Client("Madison Leigh", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213", 250, (msg, client) -> {
+        Client client2 = new Client("Madison Leigh", "42nd Downing Street", Account.TYPE.RON, "1234-5678-9101-1213","IE12BOFI90000112345678",  250, (msg, client) -> {
 
         });
         ExistingAccountException exception = Assertions.assertThrows(ExistingAccountException.class, () -> {

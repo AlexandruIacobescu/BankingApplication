@@ -16,20 +16,20 @@ public class Client extends Entity {
     private String clientCode;
     private String clientPassword;
 
-    public Client(String name, String address, Account.TYPE type, String accountNumber, double amount, Mediator m) throws DeposeException, IllegalAccountException {
+    public Client(String name, String address, Account.TYPE type, String accountNumber, String IBAN, double amount, Mediator m) throws DeposeException, IllegalAccountException {
         super(m);
         this.name = name;
         this.address = address;
         accounts = new ArrayList<>();
-        addAccount(type, accountNumber, amount);
+        addAccount(type, accountNumber, IBAN, amount);
     }
 
-    public Client(String name, String address, Account.TYPE type, String accountNumber, double amount, String clientCode, String clientPassword) throws DeposeException, IllegalAccountException {
+    public Client(String name, String address, Account.TYPE type, String accountNumber, String IBAN, double amount, String clientCode, String clientPassword) throws DeposeException, IllegalAccountException {
         super((msg, client) -> {});
         this.name = name;
         this.address = address;
         accounts = new ArrayList<>();
-        addAccount(type, accountNumber, amount);
+        addAccount(type, accountNumber, IBAN, amount);
         this.clientCode = clientCode;
         this.clientPassword = clientPassword;
     }
@@ -76,12 +76,12 @@ public class Client extends Entity {
             return this;
         }
 
-        public ClientBuilder addAccount(Account.TYPE type, String accountNumber, double amount) throws DeposeException, IllegalAccountException {
+        public ClientBuilder addAccount(Account.TYPE type, String accountNumber, String IBAN, double amount) throws DeposeException, IllegalAccountException {
             Account c = null;
             if (type == Account.TYPE.EUR)
-                c = new AccountEUR(accountNumber, amount);
+                c = new AccountEUR(accountNumber, IBAN, amount);
             else if (type == Account.TYPE.RON)
-                c = new AccountRON(accountNumber, amount);
+                c = new AccountRON(accountNumber, IBAN, amount);
             this.accounts.add(c);
             return this;
         }
@@ -106,12 +106,12 @@ public class Client extends Entity {
         this.accounts = builder.accounts;
     }
 
-    public void addAccount(Account.TYPE type, String accountNumber, double amount) throws DeposeException, IllegalAccountException {
+    public void addAccount(Account.TYPE type, String accountNumber, String IBAN, double amount) throws DeposeException, IllegalAccountException {
         Account c = null;
         if (type == Account.TYPE.EUR)
-            c = new AccountEUR(accountNumber, amount);
+            c = new AccountEUR(accountNumber, "IE12BOFI90000112345678", amount);
         else if (type == Account.TYPE.RON)
-            c = new AccountRON(accountNumber, amount);
+            c = new AccountRON(accountNumber, "IE12BOFI90000112345678", amount);
         accounts.add(c);
     }
 

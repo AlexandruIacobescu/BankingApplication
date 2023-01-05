@@ -7,6 +7,7 @@ import com.uvt.bankingapplication.interfaces.Operations;
 
 public abstract class Account implements Operations,Cloneable {
     protected String accountNumber;
+    protected String IBAN;
     protected double amount = 0;
 
     protected Account() {
@@ -27,8 +28,9 @@ public abstract class Account implements Operations,Cloneable {
         EUR, RON
     };
 
-    protected Account(String accountNumber, double amount) throws DeposeException, IllegalAccountException {
+    protected Account(String accountNumber, String IBAN, double amount) throws DeposeException, IllegalAccountException {
         this.accountNumber = accountNumber;
+        this.IBAN = IBAN;
         if(amount < 0)
             throw new IllegalAccountException("Cannot create an account with a negative balance : " + amount);
         depose(amount);
@@ -60,10 +62,11 @@ public abstract class Account implements Operations,Cloneable {
     }
 
     public String toString() {
-        return "Account: code=" + accountNumber + ", amount=" + amount;
+        return "Account: code=" + accountNumber + "IBAN: " + IBAN + ", amount=" + amount;
     }
 
     public String getAccountNumber() {
         return accountNumber;
     }
+    public String getIBAN(){return IBAN;}
 }
