@@ -10,9 +10,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="746.0" style="-fx-background-color: #e4e1f2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uvt.bankingapplication.MakeTransfersController">
    <children>
       <TextField fx:id="amountTextField" layoutX="276.0" layoutY="107.0" prefHeight="25.0" prefWidth="99.0" />
-      <TextField fx:id="transferToTextField" layoutX="55.0" layoutY="176.0" prefHeight="25.0" prefWidth="214.0" />
-      <Button fx:id="TransferButton" layoutX="277.0" layoutY="176.0" mnemonicParsing="false" onAction="#transferButtonClick" prefHeight="25.0" prefWidth="187.0" text="Transfer" />
-      <ComboBox fx:id="operationComboBox" layoutX="483.0" layoutY="107.0" onAction="#personalAccountsComboBoxIndexChanged" prefHeight="25.0" prefWidth="233.0" />
+      <TextField fx:id="transferToTextField" layoutX="55.0" layoutY="222.0" prefHeight="25.0" prefWidth="214.0" />
+      <Button fx:id="TransferButton" layoutX="277.0" layoutY="222.0" mnemonicParsing="false" onAction="#transferButtonClick" prefHeight="25.0" prefWidth="187.0" text="Transfer" />
+      <ComboBox fx:id="operationComboBox" layoutX="483.0" layoutY="107.0" onAction="#operationsComboBoxIndexChanged" prefHeight="25.0" prefWidth="233.0" />
       <Label layoutX="483.0" layoutY="84.0" text="Choose Operation:">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -22,7 +22,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="55.0" layoutY="153.0" text="Transfer to Account:">
+      <Label layoutX="55.0" layoutY="199.0" text="Transfer to Account:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -46,11 +46,17 @@
          </font>
       </Label>
       <ComboBox fx:id="personalAccountsFromComboBox" layoutX="55.0" layoutY="107.0" onAction="#setPersonalAccountsFromComboBoxIndexChanged" prefHeight="25.0" prefWidth="214.0" />
-      <ComboBox fx:id="personalAccountsToComboBox" layoutX="55.0" layoutY="176.0" onAction="#setPersonalAccountsToComboBoxIndexChanged" prefHeight="25.0" prefWidth="214.0" visible="false" />
-      <Label fx:id="controlLabel" layoutX="502.0" layoutY="180.0" text="Label" textFill="RED" visible="false">
+      <ComboBox fx:id="personalAccountsToComboBox" layoutX="55.0" layoutY="222.0" onAction="#setPersonalAccountsToComboBoxIndexChanged" prefHeight="25.0" prefWidth="214.0" visible="false" />
+      <Label fx:id="controlLabel" layoutX="483.0" layoutY="208.0" text="Label" textFill="RED" visible="false">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
+      <Label layoutX="55.0" layoutY="132.0" text="Current Balance">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="balanceTextField" layoutX="56.0" layoutY="149.0" prefHeight="25.0" prefWidth="214.0" />
    </children>
 </AnchorPane>

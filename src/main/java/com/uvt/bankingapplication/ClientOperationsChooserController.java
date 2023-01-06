@@ -59,7 +59,13 @@ public class ClientOperationsChooserController implements Initializable {
                     stage.show();
                 }
                 case "Display account details" ->{
-
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("account-details-view.fxml")));
+                    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Transfer Operations");
+                    stage.setScene(scene);
+                    stage.centerOnScreen();
+                    stage.show();
                 }
                 case "Retrieve cash" ->{
 

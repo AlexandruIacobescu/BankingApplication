@@ -98,7 +98,7 @@ public class MakeTransfersController implements Initializable {
     @FXML
     public Label clientLabel, controlLabel;
     @FXML
-    public TextField currencyTextField, amountTextField, transferToTextField;
+    public TextField currencyTextField, amountTextField, transferToTextField, balanceTextField;
     @FXML
     public Button TransferButton, backButton, logoutButton;
     @FXML
@@ -124,11 +124,12 @@ public class MakeTransfersController implements Initializable {
 
     public void setPersonalAccountsFromComboBoxIndexChanged() throws SQLException {
         Connection conn = DriverManager.getConnection(url, uname, password);
-        PreparedStatement st = conn.prepareStatement("SELECT currency FROM accounts WHERE IBAN = ?");
+        PreparedStatement st = conn.prepareStatement("SELECT currency,amount FROM accounts WHERE IBAN = ?");
         st.setString(1, personalAccountsFromComboBox.getValue());
         ResultSet set = st.executeQuery();
         set.next();
         currencyTextField.setText(set.getString(1));
+        balanceTextField.setText(set.getString(2));
         conn.close();
     }
 
@@ -207,7 +208,7 @@ public class MakeTransfersController implements Initializable {
     }
 
 
-    public void transferButtonClick() throws SQLException {
+    public void transferButtonClick() {
         try {
             switch (operationComboBox.getValue()) {
                 case "Transfer to a specific account" -> {
@@ -263,7 +264,7 @@ public class MakeTransfersController implements Initializable {
         }
     }
 
-    public void personalAccountsComboBoxIndexChanged(){
+    public void operationsComboBoxIndexChanged(){
         if(operationComboBox.getValue().equals("Transfer between personal accounts")){
             transferToTextField.setVisible(false);
             personalAccountsToComboBox.setVisible(true);
