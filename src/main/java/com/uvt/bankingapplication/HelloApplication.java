@@ -1,5 +1,6 @@
 package com.uvt.bankingapplication;
 
+import com.uvt.bankingapplication.classes.Bank;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +11,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
 
     public static String clientName;
+    public static Bank bank;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -23,5 +25,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+        bank = Bank.getInstance("UniCredit Bank", (msg, client) -> {});
     }
 }

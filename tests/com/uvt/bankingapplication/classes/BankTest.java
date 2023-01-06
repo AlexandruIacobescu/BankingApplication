@@ -1,12 +1,8 @@
 package com.uvt.bankingapplication.classes;
 
-import com.uvt.bankingapplication.classes.Account;
-import com.uvt.bankingapplication.classes.Bank;
-import com.uvt.bankingapplication.classes.Client;
 import com.uvt.bankingapplication.exceptions.DeposeException;
 import com.uvt.bankingapplication.exceptions.ExistingAccountException;
 import com.uvt.bankingapplication.exceptions.IllegalAccountException;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
