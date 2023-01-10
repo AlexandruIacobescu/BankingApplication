@@ -208,7 +208,7 @@ public class MakeTransfersController implements Initializable {
     }
 
 
-    public void transferButtonClick() {
+    public void transferButtonClick() throws SQLException {
         try {
             switch (operationComboBox.getValue()) {
                 case "Transfer to a specific account" -> {
@@ -233,7 +233,6 @@ public class MakeTransfersController implements Initializable {
                             e.printStackTrace();
                         }
                     }
-
                 }
                 case "Transfer between personal accounts" -> {
                     if (personalAccountsFromComboBox.getValue() == null || personalAccountsToComboBox.getValue() == null)
@@ -262,6 +261,7 @@ public class MakeTransfersController implements Initializable {
             showUnexpectedSystemErrorDialog(e);
             e.printStackTrace();
         }
+        setPersonalAccountsFromComboBoxIndexChanged();
     }
 
     public void operationsComboBoxIndexChanged(){
